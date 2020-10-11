@@ -4,14 +4,14 @@ const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const { check, validationResult } = require('express-validator/check');
+const { check, validationResult } = require('express-validator');
+const normalize = require('normalize-url');
 
 const User = require('../../models/User');
 
-//route     POST api/users
-//desc      register user
-//access    public
-
+// @route    POST api/users
+// @desc     Register user
+// @access   Public
 router.post(
   '/',
   [
@@ -31,22 +31,23 @@ router.post(
     const { name, email, password } = req.body;
 
     try {
-      // see if the user exists
       let user = await User.findOne({ email });
+
       if (user) {
         return res
           .status(400)
           .json({ errors: [{ msg: 'User already exists' }] });
       }
-      // get users gravatar
-      //s = default size , r = reading, d = default mm-> default image
-      const avatar = gravatar.url(email, {
-        s: '200',
-        r: 'pg',
-        d: 'mm',
-      });
 
-      // create the user
+      const avatar = normalize(
+        gravatar.url(email, {
+          s: '200',
+          r: 'pg',
+          d: 'mm',
+        }),
+        { forceHttps: true }
+      );
+
       user = new User({
         name,
         email,
@@ -54,14 +55,11 @@ router.post(
         password,
       });
 
-      //encrypted password
-
       const salt = await bcrypt.genSalt(10);
 
       user.password = await bcrypt.hash(password, salt);
 
       await user.save();
-      // return jsonwebtoken, get payload to include the user id
 
       const payload = {
         user: {
@@ -69,13 +67,15 @@ router.post(
         },
       };
 
-      //get('jwtToen) --> parse in secret password
-      jwt.sign(payload, config.get('jwtSecret'), { expiresIn: 360000 });
-      (err, token) => {
-        if (err) throw err;
-        // if no error -> token send back to the client
-        res.json({ token });
-      };
+      jwt.sign(
+        payload,
+        config.get('jwtSecret'),
+        { expiresIn: '5 days' },
+        (err, token) => {
+          if (err) throw err;
+          res.json({ token });
+        }
+      );
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
