@@ -46,7 +46,7 @@ img {
 
 /* Text Styles*/
 .x-large {
-  font-size: 4rem;
+  font-size: 5rem;
   line-height: 1.2;
   margin-bottom: 1rem;
 }
@@ -60,6 +60,8 @@ img {
 .lead {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: rgb(127, 197, 199);
 }
 
 .text-center {
