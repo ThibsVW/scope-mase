@@ -216,6 +216,14 @@ img {
   border: #ccc solid 1px;
 }
 
+.card-header {
+  font-size: 40px;
+}
+
+.card-title {
+  color: #0077b5;
+}
+
 .round-img {
   border-radius: 50%;
 }
