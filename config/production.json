@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb+srv://thibs:Thibs1234@scope.3zjc5.mongodb.net/scope?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken",
+  "githubClientId": "b23b44b3d6128b42e573",
+  "githubSecret": "34c177a17dc75ade419347348e3b137ec929749a"
+}
