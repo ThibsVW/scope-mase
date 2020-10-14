@@ -343,6 +343,10 @@ button {
   height: 100vh;
 }
 
+/*button articles */
+.btn-outline-success {
+  color: #c4302b;
+}
 .landing-inner {
   color: #fff;
   height: 100%;

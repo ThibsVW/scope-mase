@@ -13,7 +13,7 @@ const Landing = ({ isAuthenticated }) => {
       <div className='dark-overlay'>
         <div className='landing-inner'>
           <h1 className='x-large'>
-            SC <span class='fab fa-react fa-spin'> </span> PE
+            SC <span className='fab fa-react fa-spin'> </span> PE
           </h1>
           <p className='lead'>Stay Connected - Online Platform Environment</p>
           <div className='buttons'>

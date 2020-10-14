@@ -10,7 +10,7 @@ const initialState = {
   location: '',
   status: '',
   skills: '',
-  githubusername: '',
+  preferredName: '',
   bio: '',
   twitter: '',
   facebook: '',
@@ -27,7 +27,7 @@ const ProfileForm = ({
 }) => {
   const [formData, setFormData] = useState(initialState);
 
-  const [displaySocialInputs, toggleSocialInputs] = useState(false);
+  const [displaySocialInputs, toggleSocialInputs] = useState(false); //hide social options until your click on it
 
   useEffect(() => {
     if (!profile) getCurrentProfile();
@@ -51,7 +51,7 @@ const ProfileForm = ({
     location,
     status,
     skills,
-    githubusername,
+    preferredname,
     bio,
     twitter,
     facebook,
@@ -151,15 +151,12 @@ const ProfileForm = ({
         <div className='form-group'>
           <input
             type='text'
-            placeholder='Github Username'
-            name='githubusername'
-            value={githubusername}
+            placeholder='Preferred name'
+            name='preferredName'
+            value={preferredname}
             onChange={onChange}
           />
-          <small className='form-text'>
-            If you want your latest repos and a Github link, include your
-            username
-          </small>
+          <small className='form-text'>Please enter your preferred name</small>
         </div>
         <div className='form-group'>
           <textarea
