@@ -27,7 +27,7 @@ const ProfileForm = ({
 }) => {
   const [formData, setFormData] = useState(initialState);
 
-  const [displaySocialInputs, toggleSocialInputs] = useState(false); //hide social options until your click on it
+  const [displaySocialInputs, toggleSocialInputs] = useState(false); //hide social options until you click on it
 
   useEffect(() => {
     if (!profile) getCurrentProfile();
