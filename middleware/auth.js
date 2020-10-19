@@ -25,3 +25,6 @@ module.exports = function (req, res, next) {
     res.status(500).json({ msg: 'Server Error' });
   }
 };
+
+// Sending token back to authenticated key in access protected routes
+// Verfying webtoken coming from client

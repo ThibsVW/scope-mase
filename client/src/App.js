@@ -6,7 +6,7 @@ import Routes from './components/routing/Routes';
 import { LOGOUT } from './actions/types';
 
 // Redux
-import { Provider } from 'react-redux';
+import { Provider } from 'react-redux'; //connector
 import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
@@ -28,6 +28,7 @@ const App = () => {
   }, []);
 
   return (
+    // all app running under provider = under Redux
     <Provider store={store}>
       <Router>
         <Fragment>

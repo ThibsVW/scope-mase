@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
+  // Liking post to user by ID
   user: {
     type: Schema.Types.ObjectId,
   },

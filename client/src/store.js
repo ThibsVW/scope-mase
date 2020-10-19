@@ -1,12 +1,12 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import rootReducer from './reducers';
+import rootReducer from './reducers'; //compiling all reducers = index.js from reducers
 import setAuthToken from './utils/setAuthToken';
 
 const initialState = {};
 
-//think is the middleware
+//thunk is the middleware
 const middleware = [thunk];
 
 const store = createStore(

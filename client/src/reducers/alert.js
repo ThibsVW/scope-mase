@@ -11,7 +11,7 @@ export default function (state = initialState, action) {
     case SET_ALERT:
       return [...state, payload]; // if alert is already there, we ll include it via spread operator
     case REMOVE_ALERT:
-      return state.filter((alert) => alert.id !== payload); // check if alert id is not = to payload
+      return state.filter((alert) => alert.id !== payload); // check if alert id is not = to payload --> payload is the ID
     default:
       return state;
   }

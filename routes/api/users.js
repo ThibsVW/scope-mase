@@ -48,6 +48,8 @@ router.post(
         { forceHttps: true }
       );
 
+      // Creating the user
+
       user = new User({
         name,
         email,
@@ -55,11 +57,15 @@ router.post(
         password,
       });
 
+      // Turning the password into another String
+
       const salt = await bcrypt.genSalt(10);
 
       user.password = await bcrypt.hash(password, salt);
 
       await user.save();
+
+      // Getting the payload via user ID
 
       const payload = {
         user: {
@@ -67,10 +73,14 @@ router.post(
         },
       };
 
+      // Signing the token , parsing the payload , the secret jwt key, the expiry date
       jwt.sign(
         payload,
         config.get('jwtSecret'),
         { expiresIn: '5 days' },
+
+        // Callback function to see if we are getting an error, if not token returned to the client
+
         (err, token) => {
           if (err) throw err;
           res.json({ token });

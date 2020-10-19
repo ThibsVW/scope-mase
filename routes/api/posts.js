@@ -172,7 +172,7 @@ router.post(
         avatar: user.avatar,
         user: req.user.id,
       };
-
+      // Start the comment from the beginning
       post.comments.unshift(newComment);
 
       await post.save();
